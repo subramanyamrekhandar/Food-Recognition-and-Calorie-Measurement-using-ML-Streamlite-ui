@@ -97,3 +97,23 @@ frame1.pack()
 
 # Run the Tkinter main loop
 window.mainloop()
+
+
+
+import tkinter as tk
+from PIL import Image, ImageTk
+
+try:
+    print("Initializing window...")
+    window = tk.Tk()
+    print("Window initialized successfully.")
+    
+    # Test: Adding a simple label to ensure GUI works
+    label = tk.Label(window, text="Test GUI Loaded!")
+    label.pack()
+
+    print("Entering main loop...")
+    window.mainloop()
+except Exception as e:
+    print(f"An error occurred: {e}")
+
