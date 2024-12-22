@@ -103,17 +103,26 @@ window.mainloop()
 import tkinter as tk
 from PIL import Image, ImageTk
 
-try:
-    print("Initializing window...")
-    window = tk.Tk()
-    print("Window initialized successfully.")
-    
-    # Test: Adding a simple label to ensure GUI works
-    label = tk.Label(window, text="Test GUI Loaded!")
-    label.pack()
+# Initialize Tkinter window
+window = tk.Tk()
+window.title("Test App")
+window.geometry('600x400')
 
-    print("Entering main loop...")
-    window.mainloop()
+# Load Image with Exception Handling
+try:
+    icon = Image.open('icons/man.jpeg')
+    icon = icon.resize((450, 350), Image.Resampling.LANCZOS)
+    icon = ImageTk.PhotoImage(icon)
 except Exception as e:
-    print(f"An error occurred: {e}")
+    print(f"Error loading image: {e}")
+    exit()  # Exit the script if an error occurs
+
+# Display the Image
+label_icon = tk.Label(window, image=icon)
+label_icon.image = icon  # Prevent garbage collection
+label_icon.pack()
+
+# Run the Tkinter Mainloop
+window.mainloop()
+
 
